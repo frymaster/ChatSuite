@@ -1,5 +1,6 @@
 package net.krinsoft.chat.targets;
 
+import java.text.SimpleDateFormat;
 import net.krinsoft.chat.PlayerManager;
 import net.krinsoft.chat.api.Target;
 import net.krinsoft.chat.util.Replacer;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -116,6 +118,14 @@ public class ChatPlayer implements Target {
                     return (String) scope[3];
                 }
             };
+        
+        final Handler TIMESTAMP = 
+                new Replacer.Handler() {
+                    @Override
+                    public String getValue(final Object... scope) {
+                        return new SimpleDateFormat("HH:mm").format(new Date());
+                    }
+                };
 
         replacers = new Replacer[] {
             new Replacer("%afk", AFK, false),
@@ -129,6 +139,7 @@ public class ChatPlayer implements Target {
             new Replacer("%dn", SELF_DISPLAY, true),
             new Replacer("%suffix", SUFFIX, false),
             new Replacer("%s", SUFFIX, false),
+            new Replacer("%time", TIMESTAMP, false),
             new Replacer("%target", TARGET, false),
             new Replacer("%t", TARGET, true),
             new Replacer("%channel", TARGET, false),
@@ -160,6 +171,7 @@ public class ChatPlayer implements Target {
             new Replacer("%dn", SELF_DISPLAY, true),
             new Replacer("%suffix", SUFFIX, false),
             new Replacer("%s", SUFFIX, false),
+            new Replacer("%time", TIMESTAMP, false),
             // Begin whisper specific
             new Replacer("%target", WHISPER_TARGET, false),
             new Replacer("%t", WHISPER_TARGET, true),

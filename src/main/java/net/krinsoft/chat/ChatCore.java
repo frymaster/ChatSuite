@@ -328,6 +328,7 @@ public class ChatCore extends JavaPlugin {
                 "Variables, denoted by the use of a % (percent sign), can be specified in any order you wish.\n" +
                 "%n = player name\n" +
                 "%dn = player display name\n" +
+                "%time = time in 12:34 format\n" +
                 "%fn = player full name (includes prefix/suffix from players.yml)\n" +
                 "%t = target (player or channel)\n" +
                 "%p = prefix (from group section)\n" +
